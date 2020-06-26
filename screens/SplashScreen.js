@@ -13,15 +13,15 @@ const SplashScreen = ({navigation}) => {
                     animation='bounce'
                     source={require('../src/img/123.png')}
                     style={styles.logo}
-                    resizeMode="stretch"
+                    resizeMode= "center"
                 />
             </View>
             <Animatable.View 
                 style={styles.footer}
                 animation='fadeInUpBig'
             >
-                <Text style={styles.title}>Stay Connected With Everyone!</Text>
-                <View style={{flexDirection:'row'}}>
+                <Text style={styles.title}>Smart Way Of Education!</Text>
+                <View style={{flexDirection:'row', marginTop: 10}}>
                 <Image
                 source={require('../src/img/sp.png')}
                 style={styles.logo}

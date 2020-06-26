@@ -8,14 +8,14 @@ import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 //import One from './One';
 import Two from './Two';
-import Three from './Three';
 import Four from './Four';
+import ChatRoom from './ChatRoom';
 
 
 const HomeStack = createStackNavigator();
 // const DetailsStack = createStackNavigator();
 const TwoStack = createStackNavigator();
-const ThreeStack = createStackNavigator();
+const ChatStack = createStackNavigator();
 const FourStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
@@ -49,8 +49,8 @@ const MainTabScreen = () =>(
         }}
       />
       <Tab.Screen
-        name="Three"
-        component={ThreeStackScreen}
+        name="Chat"
+        component={ChatStackScreen}
         options={{
           tabBarLabel: 'Chat Room',
           tabBarColor : '#009387',
@@ -125,8 +125,8 @@ const TwoStackScreen = ({navigation}) =>(
 
 // 
 
-const ThreeStackScreen = ({navigation}) =>(
-    <ThreeStack.Navigator screenOptions={{
+const ChatStackScreen = ({navigation}) =>(
+    <ChatStack.Navigator screenOptions={{
       headerStyle:{
         backgroundColor: '#009387'
       },
@@ -135,14 +135,14 @@ const ThreeStackScreen = ({navigation}) =>(
         fontWeight: 'bold'
       }
     }}>
-      <ThreeStack.Screen name="Chat Room" component={Three} options={{
+      <ChatStack.Screen name="Chat Room" component={ChatRoom} options={{
         headerLeft: () => (
           <Icon.Button name="md-menu" size={25}
           backgroundColor="#009387" onPress={() => {navigation.openDrawer()}}></Icon.Button>
         )
       }}/>
   
-    </ThreeStack.Navigator>
+    </ChatStack.Navigator>
   );
 
 //   

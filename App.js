@@ -30,6 +30,8 @@ import { View } from 'react-native-animatable';
 import { ActivityIndicator } from 'react-native-paper';
 import { AuthContext } from './components/context'; 
 
+import ChatScreen from './screens/ChatScreen';
+
 // import NetInfo from './NetInfo';
 
 const Drawer = createDrawerNavigator();
@@ -112,6 +114,7 @@ const App = () => {
         <Drawer.Screen name="Profile" component={ProfileScreen} />
         <Drawer.Screen name="Fees" component={FeesScreen} />
         <Drawer.Screen name="Library" component={LibraryScreen} />
+        <Drawer.Screen name="ChatScreen" component={ChatScreen} />
       </Drawer.Navigator>
       )
       :

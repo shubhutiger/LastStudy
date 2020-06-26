@@ -1,10 +1,13 @@
 import React,{useRef, useState, useEffect} from 'react';
 import {View, Text, Button, StyleSheet, StatusBar,Dimensions, Image, Platform, TouchableOpacity } from 'react-native';
-import {useTheme} from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 // import Carousel from 'simple-carousel-react-native';
 import Carousel, {ParallaxImage, Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+
+import { Card } from 'react-native-shadow-cards';
 
 const ENTRIES1 = [
   {
@@ -67,116 +70,127 @@ const HomeScreen = ({navigation})  => {
     );
   };
 
-    const {colors} = useTheme();
-    const theme = useTheme();
 
-    return (
-      <View style={{flex:1, alignItems: 'center'}}>
-        <StatusBar backgroundColor="#009387" barstyle={theme.dark ? "light-content" : "dark-content"} />
-        
-        <View style={styles.container}>
-          {/* <TouchableOpacity onPress={goForward}>
-            <Text>go to next slide</Text>
-          </TouchableOpacity> */}
-          <Carousel
-            ref={carouselRef}
-            sliderWidth={screenWidth}
-            // sliderHeight={500}
-            itemWidth={screenWidth - 60}
-            data={entries}
-            renderItem={renderItem}
-            hasParallaxImages={true}
-          />
-        </View>
+  const { colors } = useTheme();
+  const theme = useTheme();
 
-        <View style={{ flexDirection: 'row',  }}>
-        <Icon name="md-chatbubbles" size={50} style={{  }} />
-          <TouchableOpacity
-            style={{ backgroundColor: '#CC33FF',
-            marginBottom: 120, 
-            width: '80%',
-            height: 40,
-            borderRadius:30, }} >
-            <Text style={{textAlign:'center',}}>
-              click here 
-            </Text>
-          </TouchableOpacity>
-        </View>
+  return (
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <StatusBar backgroundColor="#009387" barstyle={theme.dark ? "light-content" : "dark-content"} />
 
-        <View style={{ flex:1, flexDirection:'row',justifyContent: 'space-between' }}>
+      {/* Carousel */}
 
-          <View style={{width: 100, height: 50}}>
-            <Text>
-              155 
-            </Text>
-            <TouchableOpacity style={{ backgroundColor: '#aaa', borderRadius: 20}}>
-              <Text>
-                click
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={{width: 100, height: 50}}>
-            <Text style={{}}>
-              155 
-            </Text>
-            <TouchableOpacity style={{ backgroundColor: '#000', borderRadius: 20}}>
-              <Text style={{ color: '#fff' }}> 
-                click
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={{width: 100, height: 50}}>
-            <Text style={{}}>
-              155 
-            </Text>
-            <TouchableOpacity style={{ backgroundColor: '#aaa',borderRadius: 20}}>
-              <Text>
-                click
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-         
-
-         
-        </View>
-
-        <View style={{  }}>
-        </View>
-          
+      <View style={styles.container}>
+        <Carousel
+          ref={carouselRef}
+          sliderWidth={screenWidth}
+          // sliderHeight={500}
+          itemWidth={screenWidth - 60}
+          data={entries}
+          renderItem={renderItem}
+          hasParallaxImages={true}
+        />
       </View>
-    );
-  };
+      {/* End Carousel */}
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: 40,
-      shadowColor: 'black',
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.5,
-      shadowRadius: 10,
-    },
-    item: {
-      width: screenWidth - 60,
-      height: screenWidth - 180,
-    },
-    card: {
-      flex: 1,
-      // marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
-      backgroundColor: '#A91B85',
-      borderRadius: 20,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.5,
-      shadowRadius: 10,
-    },
-    image: {
-      ...StyleSheet.absoluteFillObject,
-      resizeMode: 'cover',
-    },
-  });
+      {/* Upcomming Test */}
+      <View style={{ flex: 0 }}>
+        <Card style={{ padding: 15, marginTop: 10 }}
+          // backgroundColor='#aaa'
+          elevation={20}
+        >
+          <Text>Upcoming Test</Text>
+        </Card>
+      </View>
+      {/* End Upcomming Test */}
 
-  export default HomeScreen;
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Card style={{ padding: 15, margin: 20, width: '80%', height: '70%' }}
+             backgroundColor='#aaa'
+            elevation={20}
+          >
+            <Text style={{ fontWeight: 'bold', fontSize: 30, alignContent: 'center', textAlign: 'center' }}>1500
+            <Icon
+                name="md-cash"
+                color="black"
+                size={20}
+              />
+            </Text>
+            <Text style={{ textAlign: 'center' }}>Pending Fees</Text>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#000' }}>View All</Text>
+            </TouchableOpacity>
+          </Card>
+        </View>
+        {/* End Card */}
+
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Card style={{ padding: 15, margin: 20, width: '80%', height: '70%' }}
+             backgroundColor='#aaa'
+            elevation={20}
+          >
+            <Text style={{ fontWeight: 'bold', fontSize: 30, alignContent: 'center', textAlign: 'center' }}>1500
+            <Icon
+                name="md-book"
+                color="black"
+                size={20}
+              />
+            </Text>
+            <Text style={{ textAlign: 'center' }}>Total Assignment</Text>
+            <TouchableOpacity style={styles.button}>
+              <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#000' }}>View All</Text>
+            </TouchableOpacity>
+          </Card>
+        </View>
+        {/* End Card */}
+      </View>
+
+
+
+
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 40,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  item: {
+    width: screenWidth - 60,
+    height: screenWidth - 180,
+  },
+  card: {
+    flex: 1,
+    // marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
+    backgroundColor: '#A91B85',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  image: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
+  },
+  button: {
+    alignItems: 'center',
+    marginTop: 30,
+    borderRadius: 10,
+    backgroundColor: '#08d4c4',
+    padding: 10,
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
+
+export default HomeScreen;
