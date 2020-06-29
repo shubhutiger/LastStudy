@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, StatusBar, Modal, Alert } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity, StatusBar, Modal, Alert,ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-class Profile extends Component {
-
+class Profile extends Component{
   state = {
     text: '',
     modalVisible: false
@@ -15,19 +14,18 @@ class Profile extends Component {
     this.setState({ modalVisible: visible });
   }
 
-  render() {
+  render(){
     const { modalVisible } = this.state;
-    return (
-      <View style={styles.container}>
-        {/* <StatusBar translucent backgroundColor="transparent" /> */}
+    return(
+      <Fragment>
         <Card style={styles.curve}>
-            <View style={{ marginStart: 15, marginTop: 10 }}>
+            <View style={{ marginStart: 15, marginTop: 10, width: '10%' }}>
               <TouchableOpacity onPress={()=> {this.props.navigation.goBack()}}>
                 <Icon name="arrow-circle-left" size={40} color="#fff"/>
               </TouchableOpacity>
             </View>
           <View style={{ alignItems: 'center' }}>
-            <View style={{ flexDirection: 'row', marginTop: '0%' }}> 
+            <View style={{ flexDirection: 'row', }}> 
 
                 <Text style={styles.profileStyle}> Profile </Text>
 
@@ -42,8 +40,8 @@ class Profile extends Component {
                      onPress={() => {
                       this.setModalVisible(!modalVisible);
                       }}
-                      style={{ borderColor: '#000', borderWidth: 2,width: wp('10%'),marginStart: '5%', marginTop: '5%'  }}>
-                      <Text style={{ color: '#000' }} > close </Text> 
+                      style={{ borderColor: '#000', borderWidth: 2,width: '15%',marginStart: '5%', marginTop: '5%'  }}>
+                      <Text style={{ color: '#000', fontSize: 20 }} > close </Text> 
                     </TouchableOpacity>
 
                   </Modal>
@@ -79,8 +77,7 @@ class Profile extends Component {
               </Text>
 
           </View>
-
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'row', }}>
             <View 
               style={styles.trophyStyle}>
                 <Icon 
@@ -92,7 +89,7 @@ class Profile extends Component {
                   name="star" size={40} color="#fff"
                 />
 
-               <View style={{ alignItems:'center', marginTop: '120%' }} >
+               <View style={{ alignItems:'center', marginTop: '110%' }} >
                 <Text style={{ fontSize: 20 }}>
                     { '12' }
                   </Text>
@@ -107,15 +104,16 @@ class Profile extends Component {
             <View 
               style={styles.trophyStyle2}>
                 <Icon 
-                  style={{ marginTop: '28%' }}
+                  style={{ marginTop: hp ('3.5%') }}
                   name="trophy" size={80} color="#E5BE0E"
                 />
-                <Icon 
-                  style={{ marginVertical: '-55%' }}
-                  name="star" size={20} color="#fff"
-                />
+                  <View style={{ marginTop: hp('-7%') }}>
+                    <Icon 
+                      name="star" size={20} color="#fff"
+                    />
+                  </View>
 
-                  <View style={{ alignItems:'center', marginTop: '105%' }} >
+                  <View style={{ alignItems:'center', marginTop: hp('5%') }} >
                       <Text style={{ fontSize: 20 }}>
                           { '2' }
                         </Text>
@@ -127,30 +125,23 @@ class Profile extends Component {
             </View>
 
           </View>
-            
         </Card>
-
-               <View style={{ marginTop: 75, width: '25%',marginStart: '72%', }}>
+        
+              <View style={{ marginTop: '16%', width: '25%',marginStart: '72%', }}>
                 <TouchableOpacity style={{ borderColor: '#010066', borderWidth: 2, borderRadius: 10 }}>
                   <Text style={{ color: '#010066'}} > Public Profile </Text> 
                 </TouchableOpacity>
-                </View> 
+              </View> 
 
                 <View 
-                style={{ marginStart: '1%',
+                  style={{ marginStart: '1%',
                   width: wp('98%'), 
-                  height: hp('0.5%'), 
-                  backgroundColor: '#5B7CB0',
-                  marginTop: '6%', borderRadius: 20,
-                  // shadowOffset: { width: 19, height: 20 },
-                  // shadowOpacity: 5.0,
-                  // shadowRadius: 2,
-                  // borderColor: 'red',
-                  // shadowColor: '#000',
+                  height: 1, 
+                  backgroundColor: '#009387',
+                  marginTop: 20,
                   }} />
 
-                <Card style={{ backgroundColor: '#ecf0f1', height: hp('50%') }}>
-                    <View>
+                  <Card style={{ flex: 1 }}>
                         <View style={{ flexDirection:'row', marginTop: '3%' }}>
                           <Icon 
                             style={{ marginStart: '5%' }}
@@ -160,7 +151,6 @@ class Profile extends Component {
                               { 'myprofile@gmail.com ' }
                             </Text>
                         </View>
-
                         <View style={{ flexDirection:'row', marginTop: '5%' }}>
                           <Icon 
                             style={{ marginStart: '5%' }}
@@ -207,7 +197,7 @@ class Profile extends Component {
                             </Text>
                         </View>
 
-                        <View style={{ flexDirection:'row', marginTop: '5%', width: wp('90%') }}>
+                        <View style={{ flexDirection:'row', marginTop: '5%', width: ('90%') }}>
                         <Icon 
                             style={{ marginStart: '5%' }}
                             name="map-marker" size={25} color="#E5BE0E"
@@ -218,19 +208,17 @@ class Profile extends Component {
                               { 'amli fawara, silvassa, D&NH, juiji ' }
                             </Text>
                         </View>
-
-                    </View>
-
-                </Card>
-
-      </View>
+                  </Card>
+      </Fragment>
     );
   }
 }
 
+export default Profile;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     // justifyContent: 'center',
     // paddingTop: 30,
     backgroundColor: '#ecf0f1',
@@ -284,32 +272,25 @@ const styles = StyleSheet.create({
     height: hp('15%'),
     alignItems: 'center', 
     marginStart: 20,
-    marginTop: 25,
+    marginTop: '6%',
   },
   paragraph: {
     color: '#fff',
-    margin: '1%',
+    // margin: '1%',
     fontSize: 18, 
     fontWeight: 'bold',
     textAlign: 'center',
-    // marginBottom: 20,
   },
   curve: {
     backgroundColor:'#009387',
-    width: wp('100%'),
-    height: hp('53%'),
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
+    width: '100%',
+    height: '50%',
     borderBottomRightRadius: 100,
     borderBottomLeftRadius: 170,
-    margin: 0,
-    marginLeft: 0,
     shadowOffset: { width: 19, height: 20 },
     shadowOpacity: 10.0,
     shadowRadius: 2,
     shadowColor: '#000',
-    elevation: 30,
+    elevation: 20,
   }
 });
-
-export default Profile;

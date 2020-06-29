@@ -3,7 +3,7 @@ import {View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 
-const Four = ({navigation})  => {
+const Pdf = ({navigation})  => {
 
     const {colors} = useTheme();
     const theme = useTheme();
@@ -11,7 +11,7 @@ const Four = ({navigation})  => {
     return (
       <View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
         <StatusBar backgroundColor="#009387" barstyle={theme.dark ? "light-content" : "dark-content"} />
-        <Text style={{color:colors.text}}>Four Screen </Text>
+        <Text style={{color:colors.text}}>PDf </Text>
         {/* <Button
          onPress={() => navigation.navigate("Details")}
          title="Go to Details Screen"
@@ -21,4 +21,4 @@ const Four = ({navigation})  => {
     );
   };
 
-  export default Four;
+  export default Pdf;

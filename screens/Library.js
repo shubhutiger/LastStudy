@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Alert } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
@@ -13,7 +13,7 @@ class Library extends Component {
             )
         }
         return(
-            <View style={{flex: 1}}>
+            <Fragment>
                 {/* <StatusBar translucent backgroundColor="transparent" /> */}
                 <Card style={styles.curve}>
 
@@ -27,6 +27,7 @@ class Library extends Component {
                         flexDirection: 'row',
                         justifyContent:'space-around',
                         alignItems:'center',
+                        
                         }}> 
                             <View style={{ }}>
                                 <Text style={{ fontSize: 20 }}>
@@ -41,15 +42,17 @@ class Library extends Component {
                                 </TouchableOpacity>
                             </View>
                     </View>
+                </Card>
                     
  {/* srocllview statt heremmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm */}
                     <View 
                         style={{ 
-                            flex: 1,marginTop: hp('15%'), marginBottom: '3%'
+                            flex: 1,marginTop: 1,
                             }}>
    
-                        <ScrollView 
-                            contentContainerStyle={{ alignItems: 'center' }}>
+                        <ScrollView
+                            contentContainerStyle={{ alignItems: 'center',
+                            }}>
                                 <View>
                                     <Card style={{
                                             backgroundColor: '#023e8a',
@@ -120,7 +123,7 @@ class Library extends Component {
                                                     flexDirection:'row', 
                                                     justifyContent: 'space-around', 
                                                     margin: 10 }}>
-                                                    <Icon name="facebook" size={50} color="lightblue" />
+                                                    <Icon name="magnet" size={50} color="lightblue" />
                                                 <View style={{ width: wp('45%'), height: hp('7%'),}}>
                                                     <Text style={{ fontSize: 20, color: '#fff' }}>
                                                         {' Grow your community'}
@@ -178,10 +181,10 @@ class Library extends Component {
                                                     flexDirection:'row', 
                                                     justifyContent: 'space-around', 
                                                     margin: 10 }}>
-                                                    <Icon name="facebook" size={50} color="lightblue" />
+                                                    <Icon name="tv" size={50} color="lightblue" />
                                                 <View style={{ width: wp('45%'), height: hp('7%'),}}>
                                                     <Text style={{ fontSize: 20, color: '#fff' }}>
-                                                        {'How to grow your facebook Page'}
+                                                        {'Data science Bootcamp'}
                                                     </Text>
                                                     <Text style={{ marginTop: '5%', color: '#fff' }}>
                                                         June 28th, 2020
@@ -236,10 +239,10 @@ class Library extends Component {
                                                     flexDirection:'row', 
                                                     justifyContent: 'space-around', 
                                                     margin: 10 }}>
-                                                    <Icon name="facebook" size={50} color="lightblue" />
+                                                    <Icon name="bullseye" size={50} color="lightblue" />
                                                 <View style={{ width: wp('45%'), height: hp('7%'),}}>
                                                     <Text style={{ fontSize: 20, color: '#fff' }}>
-                                                        {'How to grow your facebook Page'}
+                                                        {'target audience training'}
                                                     </Text>
                                                     <Text style={{ marginTop: '5%', color: '#fff' }}>
                                                         June 28th, 2020
@@ -456,9 +459,7 @@ class Library extends Component {
                         </ScrollView> 
       {/* end ScrollView/////////////////////////////////////////////////////////////// */}
                     </View>
-
-                </Card>
-            </View>
+            </Fragment>
         );
     }
 }
@@ -469,8 +470,6 @@ const styles = StyleSheet.create({
     curve: {
         backgroundColor:'#009387',
         width: wp('100%'),
-        height: hp('108%'),
-        margin: 0,
-        marginLeft: 0,
+        height: hp('30%'),
     }
 });

@@ -24,6 +24,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './Profile';
 import Fees from './Fees';
 import Library from './Library';
+import Attendance from './Attendance';
+import GlobalTest from './GlobalTest';
 
 
 export function DrawerContent (props){
@@ -74,7 +76,7 @@ export function DrawerContent (props){
                                 />
                             )}
                             label="Attendance"
-                            onPress={ () => {}}
+                            onPress={ () => {props.navigation.navigate(Attendance)}}
                         />
                         <DrawerItem
                             icon={({color, size}) =>  (
@@ -140,7 +142,7 @@ export function DrawerContent (props){
                                 />
                             )}
                             label="Global Test"
-                            onPress={ () => {}}
+                            onPress={ () => {props.navigation.navigate(GlobalTest)}}
                         />
 
                     </Drawer.Section>

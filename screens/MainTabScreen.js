@@ -1,14 +1,14 @@
 import React from 'react';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
 
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 //import One from './One';
 import Two from './Two';
-import Four from './Four';
+import AssignmentTab from './AssignmentTab';
 import ChatRoom from './ChatRoom';
 
 
@@ -60,7 +60,7 @@ const MainTabScreen = () =>(
         }}
       />
       <Tab.Screen
-        name="Four"
+        name="AssignmentTab"
         component={FourStackScreen}
         options={{
           tabBarLabel: 'Assignment',
@@ -157,7 +157,7 @@ const FourStackScreen = ({navigation}) =>(
         fontWeight: 'bold'
       }
     }}>
-      <FourStack.Screen name="Assignment" component={Four} options={{
+      <FourStack.Screen name="Assignment" component={AssignmentTab} options={{
         headerLeft: () => (
           <Icon.Button name="md-menu" size={25}
           backgroundColor="#009387" onPress={() => {navigation.openDrawer()}}></Icon.Button>
@@ -166,7 +166,3 @@ const FourStackScreen = ({navigation}) =>(
   
     </FourStack.Navigator>
   );
-
-
-
-

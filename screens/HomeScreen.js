@@ -1,12 +1,12 @@
 import React,{useRef, useState, useEffect} from 'react';
-import {View, Text, Button, StyleSheet, StatusBar,Dimensions, Image, Platform, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, StatusBar,Dimensions, TouchableOpacity } from 'react-native';
 import { useTheme } from '@react-navigation/native';
+import Fees from './Fees';
+import AssignmentTab from './AssignmentTab';
 
 // import Carousel from 'simple-carousel-react-native';
 import Carousel, {ParallaxImage, Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-
 import { Card } from 'react-native-shadow-cards';
 
 const ENTRIES1 = [
@@ -106,7 +106,7 @@ const HomeScreen = ({navigation})  => {
 
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Card style={{ padding: 15, margin: 20, width: '80%', height: '70%' }}
+          <Card style={{ padding: 10, margin: 20, width: '80%', height: '55%' }}
              backgroundColor='#aaa'
             elevation={20}
           >
@@ -114,11 +114,13 @@ const HomeScreen = ({navigation})  => {
             <Icon
                 name="md-cash"
                 color="black"
-                size={20}
+                size={30}
               />
             </Text>
             <Text style={{ textAlign: 'center' }}>Pending Fees</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+            onPress={()=>{navigation.navigate(Fees)}}
+            style={styles.button}>
               <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#000' }}>View All</Text>
             </TouchableOpacity>
           </Card>
@@ -126,7 +128,7 @@ const HomeScreen = ({navigation})  => {
         {/* End Card */}
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Card style={{ padding: 15, margin: 20, width: '80%', height: '70%' }}
+        <Card style={{ padding: 10, margin: 20, width: '80%', height: '55%' }}
              backgroundColor='#aaa'
             elevation={20}
           >
@@ -134,11 +136,13 @@ const HomeScreen = ({navigation})  => {
             <Icon
                 name="md-book"
                 color="black"
-                size={20}
+                size={30}
               />
             </Text>
             <Text style={{ textAlign: 'center' }}>Total Assignment</Text>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+              onPress={()=> {navigation.navigate(AssignmentTab)}}
+              style={styles.button}>
               <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#000' }}>View All</Text>
             </TouchableOpacity>
           </Card>

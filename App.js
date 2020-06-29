@@ -7,6 +7,7 @@
  */
 
 import React, { useEffect } from 'react';
+import { View } from 'react-native';
 import { 
   NavigationContainer, 
   DefaultTheme as NavigationDefaultTheme,
@@ -23,16 +24,19 @@ import MainTabScreen from './screens/MainTabScreen';
 import ProfileScreen from './screens/Profile';
 import FeesScreen from './screens/Fees';
 import LibraryScreen from './screens/Library';
+import AttendanceScreen from './screens/Attendance';
+import GlobalTestScreen from './screens/GlobalTest';
+
 import { DrawerContent } from './screens/DrawerContent';
 
 import RootStackScreen from './screens/RootStackScreen';
-import { View } from 'react-native-animatable';
+// import { View } from 'react-native-animatable';
 import { ActivityIndicator } from 'react-native-paper';
 import { AuthContext } from './components/context'; 
 
 import ChatScreen from './screens/ChatScreen';
 
-// import NetInfo from './NetInfo';
+// import Net from './NetInfo';
 
 const Drawer = createDrawerNavigator();
  
@@ -98,6 +102,7 @@ const App = () => {
     return(
       <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
         <ActivityIndicator size="large" />
+        {/* <View><Net /></View> */}
       </View>
     );
   }
@@ -115,6 +120,8 @@ const App = () => {
         <Drawer.Screen name="Fees" component={FeesScreen} />
         <Drawer.Screen name="Library" component={LibraryScreen} />
         <Drawer.Screen name="ChatScreen" component={ChatScreen} />
+        <Drawer.Screen name="Attendance" component={AttendanceScreen} />
+        <Drawer.Screen name="GlobalTest" component={GlobalTestScreen} />
       </Drawer.Navigator>
       )
       :
