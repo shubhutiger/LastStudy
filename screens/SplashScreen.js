@@ -49,24 +49,24 @@ const styles = StyleSheet.create({
     header: {
         flex: 2,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     footer: {
-        flex: 1,
+        flex: 1.1,
         backgroundColor: '#fff',
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         paddingVertical: 50,
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
     },
     logo: {
         width: wp('60%'),
-        height: hp('27%')
+        height: hp('26%'),
     },
     title: {
         color: '#05375a',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     text: {
         color: 'grey',

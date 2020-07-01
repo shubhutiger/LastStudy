@@ -4,8 +4,8 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 
-import Assignment from './Assignment';
-import CompleteA from './CompleteA';
+import Assignment from './assignmentScreens/Assignment';
+import CompleteA from './assignmentScreens/CompleteA';
 
 const Tab = createMaterialTopTabNavigator();
 

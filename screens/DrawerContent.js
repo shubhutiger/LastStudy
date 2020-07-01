@@ -26,6 +26,7 @@ import Fees from './Fees';
 import Library from './Library';
 import Attendance from './Attendance';
 import GlobalTest from './GlobalTest';
+import TimeTableTab from './TimeTableTab';
 
 
 export function DrawerContent (props){
@@ -98,7 +99,7 @@ export function DrawerContent (props){
                                 />
                             )}
                             label="Time Table"
-                            onPress={ () => {}}
+                            onPress={ () => {props.navigation.navigate(TimeTableTab)}}
                         />
                         <DrawerItem
                             icon={({color, size}) =>  (

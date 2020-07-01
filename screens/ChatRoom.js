@@ -71,7 +71,7 @@ const ChatRoom = ({ navigation }) => {
       </View>
 
       {/*  */}
-      <View style={styles.footer} animation='fadeInUpBig'>
+      <Animatable.View style={styles.footer} animation='fadeInUpBig'>
       <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ChatScreen')}>
         <View style={{ flex: 0 }}>
           <Card style={{ padding: 15, marginTop: 10 }}
@@ -150,7 +150,7 @@ const ChatRoom = ({ navigation }) => {
         </View>
         
 
-      </View>
+      </Animatable.View>
     </View>
   );
 };

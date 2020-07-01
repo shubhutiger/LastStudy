@@ -3,6 +3,7 @@ import {View, Text, Button, StyleSheet, StatusBar,TouchableOpacity } from 'react
 import {useTheme} from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const GlobalTest = ({navigation})  => {
@@ -14,7 +15,7 @@ const GlobalTest = ({navigation})  => {
       <View style={{ flex: 1 }}>
         {/* <StatusBar backgroundColor="#009387" barstyle={theme.dark ? "light-content" : "dark-content"} /> */}
         <Card style={{ 
-            backgroundColor: '#6930c3',
+            backgroundColor: '#009387',
             width:'100%',
             height:'50%',
             borderBottomRightRadius: 20,
@@ -46,10 +47,11 @@ const GlobalTest = ({navigation})  => {
                         </View>
                 </Card>
 
+            <Animatable.View animation='bounce'>
             <Card style={{
                 backgroundColor: '#fff',
                 width:'90%',
-                height:'40%',
+                height:'60%',
                 borderRadius: 20,
                 marginTop: '15%',
                 alignSelf:'center',
@@ -112,6 +114,7 @@ const GlobalTest = ({navigation})  => {
                         </View>
                     </View>
             </Card>
+            </Animatable.View>
         </Card>
 
             <View style={{ 

@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Pdf from './Pdf';
+import Pdf from '../Pdf';
 
 class Assignment extends Component {
 

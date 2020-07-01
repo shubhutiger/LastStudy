@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, StatusBar, Modal, Alert,ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Profile extends Component{
@@ -55,7 +56,7 @@ class Profile extends Component{
                 </View> 
                           
             </View>
-            <Image
+            <Animatable.Image animation='pulse'
               source={{
                 uri:
                   'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
@@ -72,12 +73,12 @@ class Profile extends Component{
 
           <View style={styles.infoStyle}>
 
-              <Text>
+              <Animatable.Text animation='pulse'>
                 { 'male | 24 | silvassa | DNH |' }
-              </Text>
+              </Animatable.Text>
 
           </View>
-          <View style={{ flexDirection: 'row', }}>
+          <Animatable.View animation='pulse' style={{ flexDirection: 'row', }}>
             <View 
               style={styles.trophyStyle}>
                 <Icon 
@@ -124,7 +125,7 @@ class Profile extends Component{
                   </View>
             </View>
 
-          </View>
+          </Animatable.View>
         </Card>
         
               <View style={{ marginTop: '16%', width: '25%',marginStart: '72%', }}>

@@ -2,6 +2,7 @@ import React, {useState, Fragment} from 'react';
 import {StyleSheet, View, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 // import moment from 'moment';
 // import _ from 'lodash';
 
@@ -29,14 +30,15 @@ function Attendance (props) {
   // };
 
     return (
-      <View style={{ height: '100%', backgroundColor: '#009387'}}>
-            
-            <View style={{ marginStart: 15, marginTop: 10, width: '10%' }}>
+
+           <View style={{ backgroundColor: '#009387'}}>
+              <View style={{ marginStart: 15, marginTop: 10, width: '10%' }}>
               <TouchableOpacity onPress={()=> {props.navigation.goBack()}}>
                 <Icon name="arrow-circle-left" size={40} color="#fff"/>
               </TouchableOpacity>
             </View>
-
+      <Animatable.View animation='pulse' style={{ height: '100%'}}>
+            
         <Calendar
           style={styles.calendar}
           // onDayLongPress={this.onDayLongPress}
@@ -126,7 +128,8 @@ function Attendance (props) {
             }
           }}
         />
-      </View>
+      </Animatable.View>
+           </View>
     );
 
 };

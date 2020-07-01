@@ -26,6 +26,7 @@ import FeesScreen from './screens/Fees';
 import LibraryScreen from './screens/Library';
 import AttendanceScreen from './screens/Attendance';
 import GlobalTestScreen from './screens/GlobalTest';
+import TimeTableScreen from './screens/TimeTableTab';
 
 import { DrawerContent } from './screens/DrawerContent';
 
@@ -122,6 +123,7 @@ const App = () => {
         <Drawer.Screen name="ChatScreen" component={ChatScreen} />
         <Drawer.Screen name="Attendance" component={AttendanceScreen} />
         <Drawer.Screen name="GlobalTest" component={GlobalTestScreen} />
+        <Drawer.Screen name="TimeTableTab" component={TimeTableScreen} />
       </Drawer.Navigator>
       )
       :

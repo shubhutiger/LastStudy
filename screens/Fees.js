@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as Animatable from 'react-native-animatable';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export function Fees (props){
@@ -17,7 +18,7 @@ export function Fees (props){
                 </TouchableOpacity>
                 </View>
 
-                <View 
+                <Animatable.View animation='pulse'
                     style={styls.container}>
                     <Card
                         style={styls.cardStyle}>
@@ -52,16 +53,17 @@ export function Fees (props){
                                 </View>
 
                     </Card>
-                </View>
+                </Animatable.View>
 
-                <View style={{ alignItems:'center' }}>
+                <Animatable.View animation='bounce' style={{ alignItems:'center' }}>
                     <TouchableOpacity 
                         style={styls.payButtonStyle}>
                         <Text style={{  textAlign:'center', fontSize: 16, margin: 10 }}> Pay Now </Text>
                     </TouchableOpacity>
-                </View>
+                </Animatable.View>
 
-                <Card style={{ 
+                <Animatable.View animation='fadeInUpBig'>
+                <Card  style={{ 
                     backgroundColor: '#ecf0f1',height: hp('55%'), 
                     borderTopRightRadius: 50,
                     borderTopLeftRadius: 50,
@@ -182,6 +184,7 @@ export function Fees (props){
 
                     </View>
                 </Card>
+                </Animatable.View>
 
             </View>
         );
