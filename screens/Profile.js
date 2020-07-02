@@ -134,7 +134,7 @@ class Profile extends Component{
                   </Text>
 
                   <Text style={{ fontWeight: 'bold' }}>
-                    {'Challenges Won'}
+                    {'Challenges Loss'}
                   </Text>
                </View>
 
@@ -156,81 +156,83 @@ class Profile extends Component{
                   backgroundColor: '#009387',
                   }} /> */}
 
-                  <Card style={{
-                    width: '100%',
-                    height: '37%',
-                    borderTopRightRadius: 50,
-                    borderTopLeftRadius: 50,
-                    elevation: 20,
-                    alignItems:'center'
-                  }}>
-                        <View style={{ flexDirection:'row', marginTop: '3%' }}>
+                  <View style={{ flex:6, marginTop: 10, }} >
+                    <Card style={{
+                      width: '100%',
+                      height: '100%',
+                      borderTopRightRadius: 50,
+                      borderTopLeftRadius: 50,
+                      elevation: 20,
+                      alignItems:'center',
+                      }}>
+                          <View style={{ flexDirection:'row', marginTop: '3%' }}>
+                            <Icon 
+                              style={{ marginStart: '5%' }}
+                              name="envelope" size={25} color="#E5BE0E"
+                            />
+                              <Text style={{ marginStart: '30%', fontSize: 16 }} >
+                                { 'myprofile@gmail.com ' }
+                              </Text>
+                          </View>
+                          <View style={{ flexDirection:'row', marginTop: '5%' }}>
+                            <Icon 
+                              style={{ marginStart: '5%' }}
+                              name="id-badge" size={25} color="#E5BE0E"
+                            >
+                              <Text style={{ fontSize: 16, color: '#000' }}> TLd License </Text>
+                            </Icon>
+                              <Text style={{ marginStart: '10%', fontSize: 16 }} >
+                                { '1234567890 ' }
+                              </Text>
+                          </View>
+                          <View style={{ flexDirection:'row', marginTop: '5%' }}>
+                            <Icon 
+                              style={{ marginStart: '5%' }}
+                              name="birthday-cake" size={25} color="#E5BE0E"
+                            >
+                              <Text style={{ fontSize: 16, color: '#000' }}> DOB </Text>
+                            </Icon>
+                              <Text style={{ marginStart: '20%', fontSize: 16 }} >
+                                { '06-04-1996 ' }
+                              </Text>
+                          </View>
+                          <View style={{ flexDirection:'row', marginTop: '5%' }}>
                           <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="envelope" size={25} color="#E5BE0E"
-                          />
-                            <Text style={{ marginStart: '30%', fontSize: 16 }} >
-                              { 'myprofile@gmail.com ' }
-                            </Text>
-                        </View>
-                        <View style={{ flexDirection:'row', marginTop: '5%' }}>
-                          <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="id-badge" size={25} color="#E5BE0E"
-                          >
-                            <Text style={{ fontSize: 16, color: '#000' }}> TLd License </Text>
-                          </Icon>
-                            <Text style={{ marginStart: '10%', fontSize: 16 }} >
-                              { '1234567890 ' }
-                            </Text>
-                        </View>
-                        <View style={{ flexDirection:'row', marginTop: '5%' }}>
-                          <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="birthday-cake" size={25} color="#E5BE0E"
-                          >
-                            <Text style={{ fontSize: 16, color: '#000' }}> DOB </Text>
-                          </Icon>
-                            <Text style={{ marginStart: '20%', fontSize: 16 }} >
-                              { '06-04-1996 ' }
-                            </Text>
-                        </View>
-                        <View style={{ flexDirection:'row', marginTop: '5%' }}>
-                        <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="id-badge" size={25} color="#E5BE0E"
-                          >
-                            <Text style={{ fontSize: 16, color: '#000' }}> DMV License </Text>
-                          </Icon>
-                            <Text style={{ marginStart: '10%', fontSize: 16 }} >
-                              { ' 9876543210 ' }
-                            </Text>
-                        </View>
+                              style={{ marginStart: '5%' }}
+                              name="id-badge" size={25} color="#E5BE0E"
+                            >
+                              <Text style={{ fontSize: 16, color: '#000' }}> DMV License </Text>
+                            </Icon>
+                              <Text style={{ marginStart: '10%', fontSize: 16 }} >
+                                { ' 9876543210 ' }
+                              </Text>
+                          </View>
 
-                        <View style={{ flexDirection:'row', marginTop: '5%' }}>
-                        <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="facebook" size={25} color="#E5BE0E"
-                          >
-                            <Text style={{ fontSize: 16, color: '#000' }}> Social security </Text>
-                          </Icon>
-                            <Text style={{ marginStart: '10%', fontSize: 16 }} >
-                              { '5627657387 ' }
-                            </Text>
-                        </View>
+                          <View style={{ flexDirection:'row', marginTop: '5%' }}>
+                          <Icon 
+                              style={{ marginStart: '5%' }}
+                              name="facebook" size={25} color="#E5BE0E"
+                            >
+                              <Text style={{ fontSize: 16, color: '#000' }}> Social security </Text>
+                            </Icon>
+                              <Text style={{ marginStart: '10%', fontSize: 16 }} >
+                                { '5627657387 ' }
+                              </Text>
+                          </View>
 
-                        <View style={{ flexDirection:'row', marginTop: '5%', width: ('90%') }}>
-                        <Icon 
-                            style={{ marginStart: '5%' }}
-                            name="map-marker" size={25} color="#E5BE0E"
-                          >
-                            <Text style={{ fontSize: 16, color: '#000' }}> Address </Text>
-                          </Icon>
-                            <Text style={{ marginStart: '20%', fontSize: 16, flex: 1 }} >
-                              { 'amli fawara, silvassa, D&NH, juiji ' }
-                            </Text>
-                        </View>
-                  </Card>
+                          <View style={{ flexDirection:'row', marginTop: '5%', width: ('90%') }}>
+                          <Icon 
+                              style={{ marginStart: '5%' }}
+                              name="map-marker" size={25} color="#E5BE0E"
+                            >
+                              <Text style={{ fontSize: 16, color: '#000' }}> Address </Text>
+                            </Icon>
+                              <Text style={{ marginStart: '20%', fontSize: 16, flex: 1 }} >
+                                { 'amli fawara, silvassa, D&NH, juiji ' }
+                              </Text>
+                          </View>
+                    </Card>
+                  </View>
       </Fragment>
     );
   }
