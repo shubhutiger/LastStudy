@@ -149,14 +149,21 @@ class Profile extends Component{
                 </TouchableOpacity>
               </View> 
 
-                <View 
+                {/* <View 
                   style={{ alignSelf:'center',
                   width: wp('98%'), 
                   height: 1, 
                   backgroundColor: '#009387',
-                  }} />
+                  }} /> */}
 
-                  <Card style={{ }}>
+                  <Card style={{
+                    width: '100%',
+                    height: '37%',
+                    borderTopRightRadius: 50,
+                    borderTopLeftRadius: 50,
+                    elevation: 20,
+                    alignItems:'center'
+                  }}>
                         <View style={{ flexDirection:'row', marginTop: '3%' }}>
                           <Icon 
                             style={{ marginStart: '5%' }}
