@@ -17,6 +17,7 @@ class Profile extends Component{
 
   render(){
     const { modalVisible } = this.state;
+
     return(
       <Fragment>
         <Card style={styles.curve}>
@@ -56,20 +57,25 @@ class Profile extends Component{
                 </View> 
                           
             </View>
-            <Animatable.Image animation='pulse'
-              source={{
-                uri:
-                  'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
-              }}
-              style={styles.imageStyle}
-            />
+              <View style={{flex: 1}}>
+                <Animatable.Image animation='pulse'
+                  source={{
+                    uri:
+                      'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+                  }}
+                  style={styles.imageStyle}
+                />
+              </View>
           </View>
-          <Text style={styles.paragraph}>
-            {'shubham ambade'}
-          </Text>
-          <Text style={styles.paragraph}>
-            {'shubham@gmail.com'}
-          </Text>
+
+          <View style={{ flex: 1, justifyContent:'flex-end', marginTop: 80 }}>
+            <Text style={styles.paragraph}>
+              {'shubham ambade'}
+            </Text>
+            <Text style={styles.paragraph}>
+              {'shubham@gmail.com'}
+            </Text>
+          </View>
 
           <View style={styles.infoStyle}>
 
@@ -78,18 +84,23 @@ class Profile extends Component{
               </Animatable.Text>
 
           </View>
-          <Animatable.View animation='pulse' style={{ flexDirection: 'row', }}>
+          <Animatable.View animation='pulse' 
+            style={{ flexDirection: 'row', flex: 1,}}>
             <View 
               style={styles.trophyStyle}>
-                <Icon 
-                  style={{ marginTop: '18%' }}
-                  name="trophy" size={110} color="#E5BE0E"
-                />
-                <Icon 
-                  style={{ marginVertical: '-70%' }}
-                  name="star" size={40} color="#fff"
-                />
 
+               <View style={{ flex:1 }}>
+                <Icon 
+                    style={{ marginTop: '18%' }}
+                    name="trophy" size={110} color="#E5BE0E"
+                  />
+               </View>
+               <View style={{ flex:1, justifyContent:'flex-end' }}>
+               <Icon 
+                    style={{ marginVertical: '-70%', }}
+                    name="star" size={40} color="#fff"
+                  />
+               </View>
                <View style={{ alignItems:'center', marginTop: '110%' }} >
                 <Text style={{ fontSize: 20 }}>
                     { '12' }
@@ -104,45 +115,48 @@ class Profile extends Component{
 
             <View 
               style={styles.trophyStyle2}>
+
+               <View style={{ flex:1 }}>
                 <Icon 
-                  style={{ marginTop: hp ('3.5%') }}
-                  name="trophy" size={80} color="#E5BE0E"
-                />
-                  <View style={{ marginTop: hp('-7%') }}>
-                    <Icon 
-                      name="star" size={20} color="#fff"
-                    />
-                  </View>
+                    style={{ marginTop: '18%' }}
+                    name="trophy" size={90} color="#E5BE0E"
+                  />
+               </View>
+               <View style={{ flex:1, justifyContent:'flex-end' }}>
+               <Icon 
+                    style={{ marginVertical: '-70%', }}
+                    name="star" size={30} color="#fff"
+                  />
+               </View>
+               <View style={{ alignItems:'center', marginTop: '110%' }} >
+                <Text style={{ fontSize: 20 }}>
+                    { '12' }
+                  </Text>
 
-                  <View style={{ alignItems:'center', marginTop: hp('5%') }} >
-                      <Text style={{ fontSize: 20 }}>
-                          { '2' }
-                        </Text>
+                  <Text style={{ fontWeight: 'bold' }}>
+                    {'Challenges Won'}
+                  </Text>
+               </View>
 
-                        <Text style={{ fontWeight: 'bold' }}>
-                          {'Challenges Lost'}
-                        </Text>
-                  </View>
             </View>
 
           </Animatable.View>
         </Card>
         
-              <View style={{ marginTop: '16%', width: '25%',marginStart: '72%', }}>
-                <TouchableOpacity style={{ borderColor: '#010066', borderWidth: 2, borderRadius: 10 }}>
+              <View style={styles.profileButton}>
+                <TouchableOpacity style={{ borderColor: '#010066', borderWidth: 2, borderRadius: 10, elevation:10 }}>
                   <Text style={{ color: '#010066'}} > Public Profile </Text> 
                 </TouchableOpacity>
               </View> 
 
                 <View 
-                  style={{ marginStart: '1%',
+                  style={{ alignSelf:'center',
                   width: wp('98%'), 
                   height: 1, 
                   backgroundColor: '#009387',
-                  marginTop: 20,
                   }} />
 
-                  <Card style={{ flex: 1 }}>
+                  <Card style={{ }}>
                         <View style={{ flexDirection:'row', marginTop: '3%' }}>
                           <Icon 
                             style={{ marginStart: '5%' }}
@@ -232,9 +246,9 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   imageStyle:{
-    marginBottom: 10,
-    width: 120,
-    height: 120,
+    // marginBottom: 10,
+    width: 110,
+    height: 110,
     borderRadius: 100,
   },
   infoStyle:{
@@ -263,6 +277,7 @@ const styles = StyleSheet.create({
     height: hp('18%'),
     alignItems: 'center',
     marginStart: 10,
+    elevation:10
   },
   trophyStyle2:{
     backgroundColor:'#fff',
@@ -274,6 +289,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     marginStart: 20,
     marginTop: '6%',
+    elevation: 10
   },
   paragraph: {
     color: '#fff',
@@ -285,13 +301,16 @@ const styles = StyleSheet.create({
   curve: {
     backgroundColor:'#009387',
     width: '100%',
-    height: '50%',
+    height: '45%',
     borderBottomRightRadius: 100,
     borderBottomLeftRadius: 170,
-    shadowOffset: { width: 19, height: 20 },
-    shadowOpacity: 10.0,
-    shadowRadius: 2,
-    shadowColor: '#000',
     elevation: 20,
-  }
+  },
+  profileButton:{ 
+    flex:1,
+    width:100,
+    alignSelf:'flex-end', 
+    marginTop: 90, 
+    alignItems:'center' 
+    }
 });
