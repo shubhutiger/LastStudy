@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView,Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Modal, StyleSheet, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { Table, TableWrapper, Row } from 'react-native-table-component';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -24,48 +24,95 @@ class Assignment extends Component {
     const { modalVisible } = this.state;
 
     const state = this.state;
-    const tableData = [];
-    for (let i = 0; i < 28; i += 1) {
-      const rowData = [];
-      for (let j = 0; j < 9; j += 1) {
-        rowData.push(`${i}${j}`);
-      }
-      tableData.push(rowData);
-    }
+        const tableData = [];
+        for (let i = 0; i < 28; i += 1) {
+          const rowData = [];
+          for (let j = 0; j < 9; j += 1) {
+            rowData.push(`${i}${j}`);
+          }
+          tableData.push(rowData);
+        }
 
+    var cards =[];
+    for (var i = 0; i < 13; i++) {
+      cards.push(
+      <View key={i}>
+        
+          <View style={{ alignItems: 'center', marginBottom: 5 }}>
+            <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
+              <View>
+                <View style={{ flexDirection:'row', }}>
+                  <View
+                    style={{
+                     // backgroundColor:'#' + (Math.random().toString(16) + "000000").substring(2,8)                    , 
+                      width:wp('2%'), height: hp('8%'),
+                    }}
+                  />
+                      <View style={{ justifyContent:'space-around', marginStart:10 }}>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
+                          {'critical social analisys'}</Text>
+                          <Text style={{ fontSize: 14 }} > {'COVI19'}
+                        </Text>
+                      </View>
+                      <View 
+                        style={{ 
+                            justifyContent: 'center',
+                            width: wp ('20%'), 
+                            marginStart: 80,
+                            }}>
+                          <TouchableOpacity 
+                            onPress={() => {
+                              this.setModalVisible(true);
+                            }}
+                            style={{   borderColor: '#000', 
+                            borderWidth: 2, 
+                            borderRadius: 20,
+                            alignItems:'center',
+                            height: hp('5%'), 
+                            justifyContent:'center',
+                            }}>
+                          <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
+                        </TouchableOpacity>
+                      </View>
+                </View>
+              </View>
+            </Card>
+          </View>
+        {/* </ScrollView> */}
+      </View>
+      );
+  }
     return(
-
-      <View style={{flex: 1}} >
-
+      <View>
         <Modal 
           animationType="slide"
           transparent={false}
           visible={modalVisible}
         >
           <View style={styles.container}>
-        <ScrollView horizontal={true}>
-          <View style={{ }}>
-          <Table borderStyle={{borderWidth: 1, borderColor: '#C1C0B9'}}>
-              <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text}/>
-            </Table>
-            <ScrollView style={styles.dataWrapper}>
+            <ScrollView horizontal={true}>
+            <View style={{ }}>
               <Table borderStyle={{borderWidth: 1, borderColor: '#C1C0B9'}}>
-                {
-                  tableData.map((rowData, index) => (
-                    <Row
-                      key={index}
-                      data={rowData}
-                      widthArr={state.widthArr}
-                      style={[styles.row, index%2 && {backgroundColor: '#F7F6E7'}]}
-                      textStyle={styles.text}
-                    />
-                  ))
-                }
+                <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text}/>
               </Table>
+                <ScrollView style={styles.dataWrapper}>
+                  <Table borderStyle={{borderWidth: 1, borderColor: '#C1C0B9'}}>
+                    {
+                      tableData.map((rowData, index) => (
+                        <Row
+                          key={index}
+                          data={rowData}
+                          widthArr={state.widthArr}
+                          style={[styles.row, index%2 && {backgroundColor: '#F7F6E7'}]}
+                          textStyle={styles.text}
+                        />
+                      ))
+                    }
+                  </Table>
+                </ScrollView>
+              </View>
             </ScrollView>
-          </View>
-        </ScrollView>
-      </View>
+            </View>
 
           <TouchableOpacity
             onPress={() => {
@@ -76,455 +123,9 @@ class Assignment extends Component {
           </TouchableOpacity>
 
         </Modal>
-
-          <View style={{ }}>
-            <ScrollView>
-              <View style={{ alignItems: 'center', padding: 10 }}>
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-            
-                                  <TouchableOpacity 
-                                    onPress={() => {
-                                      this.setModalVisible(true);
-                                    }}
-                                    style={{ 
-                                      borderColor: '#000', 
-                                      borderWidth: 2, 
-                                      borderRadius: 20,
-                                      alignItems:'center',
-                                      height: hp('5%'), 
-                                      justifyContent:'center',
-                                    }}>
-                                  <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                                </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-              <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                               onPress={() => {
-                                this.setModalVisible(true);
-                              }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation:10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation:10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-              <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%') }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-
-                <Card style={{ width: wp('90%'), marginTop: 5, height: hp('8%'), elevation: 10 }}>
-                  <View>
-                    <View style={{ flexDirection:'row', }}>
-                          <View style={{ justifyContent:'space-around', margin:10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-                              {'critical social analisys'}</Text>
-                              <Text style={{ fontSize: 14 }} > {'COVI19'} 
-                            </Text>
-                          </View>
-                          <View 
-                            style={{ 
-                                justifyContent: 'center',
-                                width: wp ('20%'), 
-                                marginStart: 80,
-                                }}>
-                              <TouchableOpacity 
-                                onPress={() => {
-                                  this.setModalVisible(true);
-                                }}
-                                style={{ 
-                                  borderColor: '#000', 
-                                  borderWidth: 2, 
-                                  borderRadius: 20,
-                                  alignItems:'center',
-                                  height: hp('5%'), 
-                                  justifyContent:'center',
-                                }}>
-                              <Text style={{ color: '#000', fontSize: 20,}} > Press </Text> 
-                            </TouchableOpacity>
-                          </View>
-                    </View>
-                  </View>
-                </Card>
-              </View>
-            </ScrollView>
-          </View>
+        <ScrollView>
+          {cards}
+        </ScrollView>
       </View>
     );
   }

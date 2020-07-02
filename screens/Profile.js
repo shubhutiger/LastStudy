@@ -19,15 +19,16 @@ class Profile extends Component{
     const { modalVisible } = this.state;
 
     return(
-      <Fragment>
+      <View style={{ flex: 1 }}>
         <Card style={styles.curve}>
             <View style={{ marginStart: 15, marginTop: 10, width: '10%' }}>
               <TouchableOpacity onPress={()=> {this.props.navigation.goBack()}}>
                 <Icon name="arrow-circle-left" size={40} color="#fff"/>
               </TouchableOpacity>
             </View>
+
           <View style={{ alignItems: 'center' }}>
-            <View style={{ flexDirection: 'row', }}> 
+            <View style={{ flexDirection: 'row' }}> 
 
                 <Text style={styles.profileStyle}> Profile </Text>
 
@@ -57,6 +58,7 @@ class Profile extends Component{
                 </View> 
                           
             </View>
+
               <View style={{flex: 1}}>
                 <Animatable.Image animation='pulse'
                   source={{
@@ -84,88 +86,115 @@ class Profile extends Component{
               </Animatable.Text>
 
           </View>
+          
           <Animatable.View animation='pulse' 
             style={{ flexDirection: 'row', flex: 1,}}>
-            <View 
-              style={styles.trophyStyle}>
+              
+            <Card style={{ 
+               borderColor:'#E5DA6E',
+               borderWidth: 5,
+               borderRadius: 100,
+               width: wp('35%'),
+               height: hp('18%'),
+               alignItems: 'center',
+               marginStart: 10,
+               elevation:10
+             }}> 
 
-               <View style={{ flex:1 }}>
-                <Icon 
-                    style={{ marginTop: '18%' }}
-                    name="trophy" size={110} color="#E5BE0E"
-                  />
-               </View>
-               <View style={{ flex:1, justifyContent:'flex-end' }}>
-               <Icon 
-                    style={{ marginVertical: '-70%', }}
-                    name="star" size={40} color="#fff"
-                  />
-               </View>
-               <View style={{ alignItems:'center', marginTop: '110%' }} >
-                <Text style={{ fontSize: 20 }}>
-                    { '12' }
-                  </Text>
+              <View 
+              // style={styles.trophyStyle}
+              >
 
-                  <Text style={{ fontWeight: 'bold' }}>
-                    {'Challenges Won'}
-                  </Text>
-               </View>
+                <View style={{ flex:1 }}>
+                  <Icon 
+                      style={{ marginTop: '18%' }}
+                      name="trophy-alt" size={110} color="#E5BE0E"
+                    />
+                </View>
 
-            </View>
+                <View style={{ flex:1, justifyContent:'center', alignItems:'center', }}>
+                  {/* <Icon 
+                      style={{ marginVertical: '-70%', }}
+                      name="star" size={40} color="#fff"
+                    /> */}
+                </View>
 
-            <View 
-              style={styles.trophyStyle2}>
+                <View style={{ alignItems:'center', marginTop: '110%' }} >
+                  <Text style={{ fontSize: 20 }}>
+                      { '12' }
+                    </Text>
 
-               <View style={{ flex:1 }}>
-                <Icon 
-                    style={{ marginTop: '18%' }}
-                    name="trophy" size={90} color="#E5BE0E"
-                  />
-               </View>
-               <View style={{ flex:1, justifyContent:'flex-end' }}>
-               <Icon 
-                    style={{ marginVertical: '-70%', }}
-                    name="star" size={30} color="#fff"
-                  />
-               </View>
-               <View style={{ alignItems:'center', marginTop: '110%' }} >
-                <Text style={{ fontSize: 20 }}>
-                    { '12' }
-                  </Text>
+                    <Text style={{ fontWeight: 'bold' }}>
+                      {'Challenges Won'}
+                    </Text>
+                  </View>
 
-                  <Text style={{ fontWeight: 'bold' }}>
-                    {'Challenges Loss'}
-                  </Text>
-               </View>
+              </View>
 
-            </View>
+            </Card>
+
+            <Card style={{
+              // backgroundColor:'#fff',
+              borderColor:'#E5655E',
+              borderWidth: 5,
+              borderRadius: 100,
+              width: wp('30%'),
+              height: hp('15%'),
+              alignItems: 'center', 
+              marginStart: 20,
+              marginTop: '6%',
+              elevation: 10
+            }}>
+              <View >
+
+                <View style={{ flex:1 }}>
+                  <Icon 
+                      style={{ marginTop: '18%' }}
+                      name="trophy-alt" size={90} color="#E5BE0E"
+                    />
+                </View>
+                <View style={{ flex:1, justifyContent:'flex-end' }}>
+                {/* <Icon 
+                      style={{ marginVertical: '-70%', }}
+                      name="star" size={30} color="#fff"
+                    /> */}
+                </View>
+                <View style={{ alignItems:'center', marginTop: '110%' }} >
+                  <Text style={{ fontSize: 20 }}>
+                      { '12' }
+                    </Text>
+
+                    <Text style={{ fontWeight: 'bold' }}>
+                      {'Challenges Loss'}
+                    </Text>
+                </View>
+
+              </View>
+            </Card>
 
           </Animatable.View>
+
         </Card>
         
-              <View style={styles.profileButton}>
-                <TouchableOpacity style={{ borderColor: '#010066', borderWidth: 2, borderRadius: 10, elevation:10 }}>
-                  <Text style={{ color: '#010066'}} > Public Profile </Text> 
-                </TouchableOpacity>
-              </View> 
+              <View style={{flex: 1}}>
+                <View style={styles.profileButton}>
+                  <TouchableOpacity style={{ borderColor: '#010066', borderWidth: 2, borderRadius: 10, elevation:10 }}>
+                    <Text style={{ color: '#010066'}} > Public Profile </Text> 
+                  </TouchableOpacity>
+                </View> 
+              </View>
 
-                {/* <View 
-                  style={{ alignSelf:'center',
-                  width: wp('98%'), 
-                  height: 1, 
-                  backgroundColor: '#009387',
-                  }} /> */}
-
-                  <View style={{ flex:6, marginTop: 10, }} >
-                    <Card style={{
-                      width: '100%',
+                  <View style={{ alignSelf:'center' }} >
+                    {/* <Card style={{
+                      // width: '100%',
                       height: '100%',
+                      // backgroundColor:'#ccc',
                       borderTopRightRadius: 50,
                       borderTopLeftRadius: 50,
                       elevation: 20,
-                      alignItems:'center',
-                      }}>
-                          <View style={{ flexDirection:'row', marginTop: '3%' }}>
+                      alignItems:'center'
+                      }}> */}
+                          <View style={{ flexDirection:'row', marginTop: '5%', }}>
                             <Icon 
                               style={{ marginStart: '5%' }}
                               name="envelope" size={25} color="#E5BE0E"
@@ -231,9 +260,9 @@ class Profile extends Component{
                                 { 'amli fawara, silvassa, D&NH, juiji ' }
                               </Text>
                           </View>
-                    </Card>
+                    {/* </Card> */}
                   </View>
-      </Fragment>
+      </View>
     );
   }
 }
@@ -278,7 +307,7 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   trophyStyle:{
-    backgroundColor:'#fff',
+    // backgroundColor:'#fff',
     borderColor:'#E5DA6E',
     borderWidth: 5,
     borderRadius: 100,
@@ -316,10 +345,11 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   profileButton:{ 
-    flex:1,
-    width:100,
+    // flex:1,
+    width:('26%'),
     alignSelf:'flex-end', 
     marginTop: 90, 
-    alignItems:'center' 
+    alignItems:'center' ,
+    // backgroundColor: '#aaa'
     }
 });
