@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import { 
   NavigationContainer, 
   DefaultTheme as NavigationDefaultTheme,
@@ -19,6 +19,12 @@ import {
    DarkTheme as PaperDarkTheme,
    DefaultTheme as PaperDefaultTheme
   } from 'react-native-paper';
+
+  import { ActivityIndicator, Colors} from 'react-native-paper';
+ import Video from 'react-native-video';
+
+  import AsyncStorage from '@react-native-community/async-storage';
+
 
 import MainTabScreen from './screens/MainTabScreen';
 import ProfileScreen from './screens/Profile';
@@ -32,10 +38,13 @@ import { DrawerContent } from './screens/DrawerContent';
 
 import RootStackScreen from './screens/RootStackScreen';
 // import { View } from 'react-native-animatable';
-import { ActivityIndicator } from 'react-native-paper';
+
+
 import { AuthContext } from './components/context'; 
 
 import ChatScreen from './screens/ChatScreen';
+import Splash from './screens/Splash';
+
 
 // import Net from './NetInfo';
 
@@ -44,8 +53,8 @@ const Drawer = createDrawerNavigator();
 
 const App = () => {
 
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
+  // const [isLoading, setIsLoading] = React.useState(true);
+  // const [userToken, setUserToken] = React.useState(null);
 
   const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
@@ -73,18 +82,83 @@ const App = () => {
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
+
+  const initialLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null
+
+  };
+
+  const loginReducer = (prevState, action) => {
+    switch( action.type ){
+      case 'RETRIVE_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false
+        };
+
+      case 'LOGIN':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false
+        };
+
+      case 'LOGOUT':
+        return {
+          ...prevState,
+          userName: null,
+          userToken: null,
+          isLoading: false
+        };
+      
+      case 'REGISTER':
+        return {
+          ...prevState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false
+        };
+      
+    }
+  };
+
+
+  const [loginState, dispatch] = React.useReducer(loginReducer, initialLoginState)
+
   const authContext = React.useMemo(() => ({
-    signIn: ()=>{
-      setUserToken('Abcd');
-      setIsLoading(false);
+    signIn: async(userName, password)=>{
+      // setUserToken('Abcd');
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      if( userName == 'user' && password == 'pass') {
+        try{
+          userToken = 'Abcd';
+          await AsyncStorage.setItem('userToken', userToken)
+        } catch(e){
+          console.log(e);
+        }
+      }
+      dispatch({ type: 'LOGIN', id: userName, token: userToken});
     },
-    signOut: ()=>{
-      setUserToken(null);
-      setIsLoading(false);
+
+    signOut: async()=>{
+
+      try{
+        userToken = 'Abcd';
+        await AsyncStorage.removeItem('userToken')
+      } catch(e){
+        console.log(e);
+      }
+      dispatch({ type: 'LOGOUT'});
     },
     signUp: ()=>{
-      setUserToken('Abcd');
-      setIsLoading(false);
+      // setUserToken('Abcd');
+      // setIsLoading(false);
     },
     toggleTheme: ()=>{
       setIsDarkTheme(isDarkTheme => !isDarkTheme);
@@ -92,20 +166,34 @@ const App = () => {
   }));
 
   useEffect(()=>{
-    setTimeout(()=>{
-      setIsLoading(false);
+    setTimeout(async()=>{
+      let userToken;
+      userToken = null;
+      try{
+        userToken = await AsyncStorage.getItem('userToken')
+      } catch(e){
+        console.log(e);
+      }
+      dispatch({ type: 'RETRIVE_TOKEN', token: userToken}); 
     },1000);
   }, []);
 
 
-  if( isLoading )
+  if( loginState.isLoading )
   {
     return(
-      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <ActivityIndicator size="large" />
-        {/* <View><Net /></View> */}
-      </View>
+      // <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        // <ActivityIndicator size="large" animating={true} color={Colors.orange600} /> 
+        // <Video style={{flex:1, justifyContent:'center', alignItems:'center'}} source={require('./src/sp.mp4')} />
+        
+      // </View>
+      // <ImageBackground style={{flex:1}} source={require('./src/img/123.png')}>
+
+      // </ImageBackground>
+      <Video style={{flex:1, justifyContent:'center', alignItems:'center'}} source={require('./src/sp.mp4')} />
     );
+
+  
   }
 
 
@@ -113,7 +201,7 @@ const App = () => {
     <PaperProvider theme={theme}>
     <AuthContext.Provider value={authContext}>
     <NavigationContainer theme={theme}>
-      { userToken != null ? (
+      { loginState.userToken != null ? (
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Home" component={MainTabScreen} />
         {/* <Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
@@ -124,6 +212,7 @@ const App = () => {
         <Drawer.Screen name="Attendance" component={AttendanceScreen} />
         <Drawer.Screen name="GlobalTest" component={GlobalTestScreen} />
         <Drawer.Screen name="TimeTableTab" component={TimeTableScreen} />
+        <Drawer.Screen name="Sp" component={Splash} />
       </Drawer.Navigator>
       )
       :

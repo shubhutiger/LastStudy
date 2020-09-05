@@ -17,13 +17,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../components/context';
 
 
+
+
+
 const SignInScreen = ({navigation}) => {
 
     const [data, setData] = React.useState({
         email: '',
         password: '',
         check_textInputChange: false,
-        secureTextEntry : true
+        secureTextEntry : true,
+        isValidUser: true,
+        isValidPassword: true
     });
 
     const { signIn } = React.useContext(AuthContext);
@@ -59,6 +64,9 @@ const SignInScreen = ({navigation}) => {
         });
     }
 
+    const loginHandle = (username, password) => {
+        signIn(username, password);
+    }
 
     return(
         <View style={styles.container}>
@@ -67,7 +75,7 @@ const SignInScreen = ({navigation}) => {
                 <Text style={styles.text_header}>Welcome!</Text>
             </View>
             <Animatable.View style={styles.footer} animation='fadeInUpBig'>
-                <Text style={styles.text_footer}>Email / User Id</Text>
+                <Text style={styles.text_footer}>Email Id</Text>
                 <View style={styles.action}>
                     <Icon name="md-person" size={20} />
                     <TextInput 
@@ -89,6 +97,14 @@ const SignInScreen = ({navigation}) => {
                     
                     : null}
                 </View>
+
+                { data.isValidUser ? null : 
+                <Animatable.View animation="fadeInLeft" duration={500}>
+                    <Text style={styles.errorSmg}>Wrong User Name</Text>
+                </Animatable.View>
+                }
+
+
                 <Text style={[styles.text_footer, {
                     marginTop: 35
                 }]}>Password</Text>
@@ -119,8 +135,15 @@ const SignInScreen = ({navigation}) => {
                     }
                     </TouchableOpacity>
                 </View>
+
+                { data.isValidPassword ? null : 
+                <Animatable.View animation="fadeInLeft" duration={500}>
+                    <Text style={styles.errorSmg}>Wrong Password</Text>
+                </Animatable.View>
+                }
+
                 <View style={{flexDirection:'row'}}>
-                    <TouchableOpacity style={styles.button} onPress={()=>{signIn()}}>
+                    <TouchableOpacity style={styles.button} onPress={()=>{loginHandle(data.email, data.password)}}>
                         <Text style={{fontWeight:'bold',fontSize:17,color:'#fff'}}>Sign In</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
@@ -204,7 +227,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         color: '#05375a',
     },
-    errorMsg: {
+    errorSmg: {
         color: '#FF0000',
         fontSize: 14,
     },
